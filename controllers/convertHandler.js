@@ -1,3 +1,5 @@
+const { parse } = require("dotenv");
+
 function ConvertHandler() {
   this.getNum = function (input) {
     const match = input.match(/[a-zA-Z]/);
@@ -61,17 +63,17 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     switch (initUnit) {
       case "gal":
-        return initNum * galToL;
+        return parseFloat((initNum * galToL).toFixed(5));
       case "L":
-        return initNum / galToL;
+        return parseFloat((initNum / galToL).toFixed(5));
       case "lbs":
-        return initNum * lbsToKg;
+        return parseFloat((initNum * lbsToKg).toFixed(5));
       case "kg":
-        return initNum / lbsToKg;
+        return parseFloat((initNum / lbsToKg).toFixed(5));
       case "mi":
-        return initNum * miToKm;
+        return parseFloat((initNum * miToKm).toFixed(5));
       case "km":
-        return initNum / miToKm;
+        return parseFloat((initNum / miToKm).toFixed(5));
       default:
         return null;
     }

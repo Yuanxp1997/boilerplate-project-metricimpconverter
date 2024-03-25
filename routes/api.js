@@ -9,7 +9,11 @@ module.exports = function (app) {
     const input = req.query.input;
     const initNum = convertHandler.getNum(input);
     const initUnit = convertHandler.getUnit(input);
-    if (initUnit === null) {
+    if (initNum === null && initUnit === null) {
+      res.json("invalid number and unit");
+    } else if (initNum === null) {
+      res.json("invalid number");
+    } else if (initUnit === null) {
       res.json("invalid unit");
     } else {
       const returnNum = convertHandler.convert(initNum, initUnit);
